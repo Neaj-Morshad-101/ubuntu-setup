@@ -12,3 +12,13 @@ The Dropbox daemon is only compatible with 64-bit Linux servers. To install, run
 `cd ~ && wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -`
 Next, `run the Dropbox` daemon from the newly created .dropbox-dist folder.
 `~/.dropbox-dist/dropboxd`
+
+
+# Install yq
+curl -fsSL -o yqq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+chmod +x yqq
+sudo mv yqq /usr/local/bin/yqq
+pip3 install yq               -->   pip3 install yq --break-system-packages
+                                  +
+nano ~/.bashrc
+export PATH="/home/appscodepc/.local/bin:$PATH"
