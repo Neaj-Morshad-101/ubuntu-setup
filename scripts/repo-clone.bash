@@ -10,20 +10,21 @@ GO_SRC=/home/$USER/go/src/
 
 
 declare -A ar
-ar[0]="kubedb.dev kubedb apimachinery autoscaler cli crd-manager db-client-go docs elasticsearch installer kafka mariadb
-        mssqlserver mssql-coordinator mssql-init-docker mongodb mongodb-init-docker mongodb-restic-plugin mysql ops-manager postgres redis schema-manager tests ui-server webhook-server"
+ar[0]="kubedb.dev kubedb apimachinery autoscaler cli crd-manager db-client-go docs installer mariadb
+        mssqlserver mssql-coordinator mssql-init-docker mysql ops-manager postgres redis tests webhook-server"
 
-ar[1]="kubeops.dev kubeops falco-ui-server installer panopticon scanner sidekick trivydb-docker ui-server"
-ar[2]="go.bytebuilders.dev appscode-cloud b3 catalog catalog-manager cluster-presets cluster-ui grafana installer kubedb-ui platform-ui launchpad
-         lib-selfhost license-proxyserver service-provider ui-wizards"
+ar[1]="go.appscode.dev appscode alerts blog grafana-dashboards"
+ar[2]="github.com/Neaj-Morshad-101 yamls SQL-Server-Kubernetes-Operator"
 
-ar[4]="stash.appscode.dev stashed apimachinery enterprise installer mongodb"
-ar[5]="kubestash.dev kubestash addon-template apimachinery installer kubedb-manifest kubestash"
+#ar[1]="kubeops.dev kubeops falco-ui-server installer panopticon scanner sidekick trivydb-docker ui-server"
+#ar[2]="go.bytebuilders.dev appscode-cloud b3 catalog catalog-manager cluster-presets cluster-ui grafana installer kubedb-ui platform-ui launchpad
+#         lib-selfhost license-proxyserver service-provider ui-wizards"
 
-ar[5]="kmodules.xyz kmodules client-go codespan-schema-checker controller-runtime custom-resources offshoot-api resource-metadata resource-metrics webhook-runtime"
-ar[6]="kubepack.dev kubepack chart-doc-gen kubepack lib-app lib-helm"
-ar[7]="go.appscode.dev appscode alerts blog grafana-dashboards"
-ar[8]="github.com/Neaj-Morshad-101 yamls SQL-Server-Kubernetes-Operator"
+#ar[4]="stash.appscode.dev stashed apimachinery enterprise installer mongodb"
+#ar[5]="kubestash.dev kubestash addon-template apimachinery installer kubedb-manifest kubestash"
+
+#ar[5]="kmodules.xyz kmodules client-go codespan-schema-checker controller-runtime custom-resources offshoot-api resource-metadata resource-metrics webhook-runtime"
+#ar[6]="kubepack.dev kubepack chart-doc-gen kubepack lib-app lib-helm"
 
 
 for i in ${!ar[@]}
