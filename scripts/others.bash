@@ -16,10 +16,11 @@ fi
 
 # Install Discord
 if ! command_exists discord; then
-    wget https://dl.discordapp.net/apps/linux/0.0.81/discord-0.0.81.deb
-    sudo dpkg -i discord-0.0.81.deb
+    DISCORD_VERSION=0.0.81
+    wget https://dl.discordapp.net/apps/linux/$DISCORD_VERSION/discord-$DISCORD_VERSION.deb
+    sudo dpkg -i discord-$DISCORD_VERSION.deb
     sudo apt-get install -f -y
-    rm discord-0.0.81.deb
+    rm discord-$DISCORD_VERSION.deb
 else
     echo "discord is already installed."
 fi
@@ -82,6 +83,7 @@ else
 fi
 
 
+
 # Install Dropbox
 # Function to check if a process is running
 process_exists() {
@@ -106,4 +108,27 @@ if ! process_exists dropboxd; then
     echo "Dropbox daemon started."
 else
     echo "Dropbox daemon is already running."
+fi
+
+# Install trivy
+if ! command_exists trivy; then
+    sudo apt-get install -y --no-install-recommends wget apt-transport-https gnupg lsb-release
+    wget -qO - https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo apt-key add -
+    echo deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main | sudo tee -a /etc/apt/sources.list.d/trivy.list
+    sudo apt-get update
+    sudo apt-get install -y --no-install-recommends trivy
+else
+    echo "Trivy is already installed."
+fi
+
+
+# Install yq
+if ! command_exists yq; then
+    curl -fsSL -o yqq https://github.com/mikefarah/yq/releases/download/3.3.0/yq_linux_amd64
+    chmod +x yqq
+    sudo mv yqq /usr/local/bin/yqq
+    sudo apt install pipx
+    pipx install yq
+else
+    echo "yq is already installed."
 fi
