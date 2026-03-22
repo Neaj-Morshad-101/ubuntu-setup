@@ -27,11 +27,16 @@ sudo apt install -y ubuntu-restricted-extras \
  python-dev-is-python3 python3-pip
 
 
+
+bash ide.bash
+
 bash docker.bash
+# git/github go
 bash git.bash
 bash go.bash
+bash repo-clone.bash
+
 # bash node.bash
-bash ide.bash
 # bash mongo.bash
 
 bash env.bash

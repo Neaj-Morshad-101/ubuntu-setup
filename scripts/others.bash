@@ -82,34 +82,6 @@ else
     echo "Zoom is already installed."
 fi
 
-
-
-# Install Dropbox
-# Function to check if a process is running
-process_exists() {
-    pgrep "$1" >/dev/null 2>&1
-}
-
-# Check if Dropbox headless is already installed by verifying the .dropbox-dist folder
-if [ ! -d "$HOME/.dropbox-dist" ]; then
-    echo "Installing Dropbox headless..."
-    cd ~ || { echo "Failed to change directory to home."; exit 1; }
-    # Download and extract the Dropbox daemon for 64-bit Linux
-    wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
-else
-    echo "Dropbox headless is already installed."
-fi
-
-# Check if the Dropbox daemon is already running
-if ! process_exists dropboxd; then
-    echo "Starting Dropbox daemon..."
-    # Start the daemon in the background and redirect output to a log file (optional)
-    nohup "$HOME/.dropbox-dist/dropboxd" > "$HOME/.dropbox.log" 2>&1 &
-    echo "Dropbox daemon started."
-else
-    echo "Dropbox daemon is already running."
-fi
-
 # Install trivy
 if ! command_exists trivy; then
     sudo apt-get install -y --no-install-recommends wget apt-transport-https gnupg lsb-release
@@ -131,4 +103,32 @@ if ! command_exists yq; then
     pipx install yq
 else
     echo "yq is already installed."
+fi
+
+
+# Check if the Dropbox daemon is already running
+if ! process_exists dropboxd; then
+    echo "Starting Dropbox daemon..."
+    # Start the daemon in the background and redirect output to a log file (optional)
+    nohup "$HOME/.dropbox-dist/dropboxd" > "$HOME/.dropbox.log" 2>&1 &
+    echo "Dropbox daemon started."
+else
+    echo "Dropbox daemon is already running."
+fi
+
+
+# Install Dropbox
+# Function to check if a process is running
+process_exists() {
+    pgrep "$1" >/dev/null 2>&1
+}
+
+# Check if Dropbox headless is already installed by verifying the .dropbox-dist folder
+if [ ! -d "$HOME/.dropbox-dist" ]; then
+    echo "Installing Dropbox headless..."
+    cd ~ || { echo "Failed to change directory to home."; exit 1; }
+    # Download and extract the Dropbox daemon for 64-bit Linux
+    wget -O - "https://www.dropbox.com/download?plat=lnx.x86_64" | tar xzf -
+else
+    echo "Dropbox headless is already installed."
 fi

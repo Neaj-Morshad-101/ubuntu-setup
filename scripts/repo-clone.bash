@@ -1,5 +1,9 @@
 #! /bin/bash
 
+go env -w GOPRIVATE='github.com/appscode/*,go.appscode.dev/*,kubedb.dev/*,github.com/ak8sdb/*,kubeops.dev/*,go.bytebuilders.dev/*,kubepack.dev/*,kubestash.dev/*,stash.appscode.dev/*'
+
+
+
 GO_SRC=/home/$USER/go/src/
 
 # curl -L \

@@ -6,16 +6,16 @@
 '
 
 git config --global user.name "Neaj Morshad"
-git config --global user.email neaj@appscode.com
+git config --global user.email neajmorshad.ashik101@gmail.com
 
-ssh-keygen -t rsa -C "neaj@appscode.com"
+ssh-keygen -t rsa -C "neajmorshad.ashik101@gmail.com"
 ps -e  | grep [s]sh-agent
 ssh-add ~/.ssh/id_rsa
 ssh-add -l
 cat ~/.ssh/id_rsa.pub
 
 
-echo "Now go to your github settings -> ssh page, & add this new one."
+echo "Now go to your github settings -> ssh page, & add this new one (~/.ssh/id_rsa.pub)."
 TEXT="done"
 echo "Waiting for text: $TEXT"
 
@@ -25,15 +25,15 @@ while true; do
 done
 
 # PAT
-echo "Also Go to Developer settings page; Get a PAT token; Paste it in the promt & Enter"
+echo "Also Go to Developer settings page; Create a PAT token; Paste it in the promt & Enter"
 read -r line
 export GITHUB_USER=neaj-morshad-101
 export GITHUB_TOKEN="$line"
 git config --global \
 url."https://"$GITHUB_USER":"$GITHUB_TOKEN"@github.com".insteadOf \
 "https://github.com"
-go env -w GOPRIVATE='github.com/appscode/*,go.appscode.dev/*,kubedb.dev/*,github.com/ak8sdb/*,kubeops.dev/*,go.bytebuilders.dev/*,kubepack.dev/*,kubestash.dev/*,stash.appscode.dev/*'
 
 
-bash repo-clone.bash
+# go env -w GOPRIVATE='github.com/appscode/*,go.appscode.dev/*,kubedb.dev/*,github.com/ak8sdb/*,kubeops.dev/*,go.bytebuilders.dev/*,kubepack.dev/*,kubestash.dev/*,stash.appscode.dev/*'
+# bash repo-clone.bash
 
